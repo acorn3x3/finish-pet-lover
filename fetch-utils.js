@@ -1,6 +1,7 @@
-const SUPABASE_URL = 'https://nwxkvnsiwauieanvbiri.supabase.co';
+const SUPABASE_URL = 'https://fhvcsnhphrubxagoqfjv.supabase.co';
 const SUPABASE_KEY =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzNzAwMzQzNCwiZXhwIjoxOTUyNTc5NDM0fQ.8XIsU0FANdaNeQnT-DojpTL-GTlTPZ4CYZDEetpFpWc';
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZodmNzbmhwaHJ1YnhhZ29xZmp2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjQ4MjE0NDAsImV4cCI6MTk4MDM5NzQ0MH0.bDfpQbFiN6-UOiCvI4_z6I12f8tx1p0nO3P_Nmr6Ubc';
+
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 /* Auth related functions */
@@ -28,6 +29,10 @@ export async function signOutUser() {
 }
 
 /* Data functions */
+
+export async function createPet(pet) {
+    return await client.from('pets').insert(pet).single();
+}
 
 // > Part B: Export async function that
 //      - inserts (creates) a supplied pet argument into supabase
