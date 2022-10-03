@@ -1,6 +1,7 @@
 /* Imports */
 // this will check if we have a user and set signout link if it exists
 import '../auth/user.js';
+import { createPet, uploadImage } from '../fetch-utils.js';
 // > Part A: import upload image
 // > Part B: import fetch to create a pet
 
