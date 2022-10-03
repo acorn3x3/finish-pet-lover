@@ -34,7 +34,7 @@ export async function createPet(pet) {
     return await client.from('pets').insert(pet).single();
 }
 
-export async function displayPets(name) {
+export async function getPets(name) {
     let query = client.from('pets').select('*').limit(200);
 
     if (name) {

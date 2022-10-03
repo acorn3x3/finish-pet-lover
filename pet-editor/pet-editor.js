@@ -10,6 +10,7 @@ const petForm = document.getElementById('pet-form');
 const errorDisplay = document.getElementById('error-display');
 const imageInput = document.getElementById('image-input');
 const preview = document.getElementById('preview');
+const addButton = petForm.querySelector('button');
 
 /* State */
 let error = null;
@@ -32,19 +33,22 @@ petForm.addEventListener('submit', async (e) => {
     const imageFile = formData.get('image');
     const randomFolder = Math.floor(Date.now() * Math.random());
     const imagePath = `pets/${randomFolder}/${imageFile.name}`;
+
     const url = await uploadImage('images', imagePath, imageFile);
     // > Part A: Call upload image with the bucket ("images"),
     // the imagePath, and the imageFile - and store the returned url
 
     const pet = {
         name: formData.get('name'),
-        description: formData.get('description'),
+        bio: formData.get('bio'),
         image_url: url,
         // > Part B: add the name, bio, and image_url fields to the pet object
     };
+
     const response = await createPet(pet);
     error = response.error;
     addButton.disabled = false;
+
     if (error) {
         displayError();
     } else {
