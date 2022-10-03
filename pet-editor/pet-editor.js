@@ -42,6 +42,7 @@ petForm.addEventListener('submit', async (e) => {
         name: formData.get('name'),
         bio: formData.get('bio'),
         image_url: url,
+
         // > Part B: add the name, bio, and image_url fields to the pet object
     };
 

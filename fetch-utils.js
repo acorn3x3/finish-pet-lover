@@ -35,10 +35,10 @@ export async function createPet(pet) {
 }
 
 export async function getPets(name) {
-    let query = client.from('pets').select('*').limit(200);
+    let query = client.from('pets').select('*').order('created_at').limit(200);
 
     if (name) {
-        query.ilike('created_at', `%${name}%`);
+        query.ilike('name', `%${name}%`);
     }
     return await query;
 }
