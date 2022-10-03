@@ -42,7 +42,14 @@ petForm.addEventListener('submit', async (e) => {
         image_url: url,
         // > Part B: add the name, bio, and image_url fields to the pet object
     };
-
+    const response = await createPet(pet);
+    error = response.error;
+    addButton.disabled = false;
+    if (error) {
+        displayError();
+    } else {
+        location.assign('/');
+    }
     // > Part B:
     //    - call function to create the pet in the database
     //    - store the error and pets state from the response

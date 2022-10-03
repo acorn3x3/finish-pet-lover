@@ -34,6 +34,15 @@ export async function createPet(pet) {
     return await client.from('pets').insert(pet).single();
 }
 
+export async function displayPets(name) {
+    let query = client.from('pets').select('*').limit(200);
+
+    if (name) {
+        query.ilike('name', `%${name}%`);
+    }
+    return await query;
+}
+
 // > Part B: Export async function that
 //      - inserts (creates) a supplied pet argument into supabase
 //      - returns a single data object (not an array)
